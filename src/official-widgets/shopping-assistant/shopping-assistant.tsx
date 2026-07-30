@@ -37,6 +37,16 @@ const SUGGESTION_LINE_REGEX = /\(\(([^)]+)\)\)/g;
 const INCOMPLETE_PRODUCT_TOKEN_REGEX = /\[\[[^\]]*$/;
 const FOCUS_VISIBLE_CLASSES = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-300';
 
+// Pre-built starter questions shown in the opening state (Armani-style
+// "Try a starting point"). Jewellery-oriented for the Swarovski catalogue.
+const STARTER_PROMPTS_LABEL = 'Try a starting point';
+const STARTER_PROMPTS = [
+  'A gift under £150',
+  'Jewellery for a special occasion',
+  'Crystal necklaces',
+  'Statement earrings',
+];
+
 // Clean the accumulated text for display:
 // - Old format (token leads the line): drop the whole line; the product card replaces it.
 // - New format (token inline/trailing): strip only the token, keep the surrounding description.
@@ -406,6 +416,8 @@ const ShoppingAssistant: FC<ShoppingAssistantProps> = ({ renderModalWithoutPorta
                     chats={chats}
                     latestMessage={latestMessage}
                     suggestions={suggestions}
+                    starterPrompts={STARTER_PROMPTS}
+                    starterPromptsLabel={STARTER_PROMPTS_LABEL}
                     streamingProducts={streamingProducts}
                     streamingRequestId={streamingRequestId}
                     showAllSuggestions={showAllSuggestions}

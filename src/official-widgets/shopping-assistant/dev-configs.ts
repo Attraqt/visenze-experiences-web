@@ -6,8 +6,8 @@ const customCss = `
 
 export const devConfigs: RecursivePartial<WidgetConfig> = {
   appSettings: {
-    appKey: '',
-    placementId: '',
+    appKey: '34416b23593a47a4bc2802e5c7fe0e5d',
+    placementId: '10799',
     endpoint: '',
     cloud: 'aws', // remove this if you are testing in staging environment
   },

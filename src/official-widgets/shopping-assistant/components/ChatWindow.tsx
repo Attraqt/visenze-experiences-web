@@ -28,13 +28,16 @@ interface ChatWindowProps {
   chats: Chat[];
   latestMessage: string;
   suggestions: string[];
+  starterPrompts: string[];
+  starterPromptsLabel: string;
   sendMessage: (message: string) => void;
   streamingProducts?: ProcessedProduct[];
   streamingRequestId?: string;
 }
 
 const ChatWindow: FC<ChatWindowProps> = ({
-  isWaiting, chats, latestMessage, suggestions, sendMessage, showAllSuggestions, setShowAllSuggestions,
+  isWaiting, chats, latestMessage, suggestions, starterPrompts, starterPromptsLabel,
+  sendMessage, showAllSuggestions, setShowAllSuggestions,
   streamingProducts = [], streamingRequestId = '',
 }) => {
   const { widgetConfig, darkMode } = useContext(WidgetDataContext);
@@ -292,6 +295,27 @@ const ChatWindow: FC<ChatWindowProps> = ({
                 )}
               </>
           )}
+          {!isWaiting && starterPrompts.length > 0 && !chats.some((chat) => chat.author === 'user') && (
+            <div className='mt-3'>
+              <div className='mb-2 text-[11px] uppercase tracking-[0.14em] text-neutral-500 dark:text-neutral-400'>
+                {starterPromptsLabel}
+              </div>
+              <div className='flex flex-col gap-2'>
+                {starterPrompts.map((prompt, idx) => (
+                  <button
+                    type='button'
+                    key={`starter-${idx}`}
+                    className='w-full rounded-md border border-neutral-300 dark:border-neutral-600 px-3 py-2.5 text-left text-sm
+                      text-neutral-900 dark:text-neutral-100 transition-colors hover:border-black hover:bg-black hover:text-white
+                      dark:hover:border-white dark:hover:bg-white dark:hover:text-black'
+                    onClick={() => sendMessage(prompt)}
+                  >
+                    {prompt}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           {!isWaiting && suggestions.length > 0 && (
             <div className='mt-2 flex items-end'>
               <div className='flex flex-wrap gap-2'
@@ -303,8 +327,9 @@ const ChatWindow: FC<ChatWindowProps> = ({
                       <button
                         type='button'
                         className={cn(
-                            'w-fit bg-sky-100 dark:bg-stone-700 p-2 text-xs text-blue-900 dark:text-blue-50',
-                            'rounded-lg border border-neutral-100 dark:border-neutral-800 cursor-pointer',
+                            'w-fit cursor-pointer rounded-lg border border-neutral-300 dark:border-neutral-600 p-2 text-xs',
+                            'text-neutral-900 transition-colors hover:border-black hover:bg-black hover:text-white',
+                            'dark:text-neutral-100 dark:hover:border-white dark:hover:bg-white dark:hover:text-black',
                             FOCUS_VISIBLE_CLASSES,
                         )}
                         onClick={() => sendMessage(suggestion)}
@@ -318,8 +343,9 @@ const ChatWindow: FC<ChatWindowProps> = ({
                   <button
                     type='button'
                     className={cn(
-                        'w-fit bg-sky-200 dark:bg-stone-700 p-2 text-xs text-blue-900 dark:text-blue-50',
-                        'rounded-lg border border-neutral-100 dark:border-neutral-800 cursor-pointer',
+                        'w-fit cursor-pointer rounded-lg border border-neutral-300 dark:border-neutral-600 p-2 text-xs',
+                        'text-neutral-600 transition-colors hover:border-black hover:text-black',
+                        'dark:text-neutral-300 dark:hover:border-white dark:hover:text-white',
                         FOCUS_VISIBLE_CLASSES,
                     )}
                     onClick={() => {

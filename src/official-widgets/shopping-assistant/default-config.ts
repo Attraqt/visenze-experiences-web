@@ -3,11 +3,11 @@ import type { LanguagePack } from '../../common/locales/locale';
 
 export const DEFAULT_TEXTS: LanguagePack = {
   en: {
-    widgetTitle: 'Shopping Assistant',
-    openingMessage1: 'Let\'s get started',
-    openingMessage2: 'Tell us about what your styling needs and we will help you find the perfect item for you',
-    chatBoxPlaceholder: 'Type your message',
-    triggerCTA: 'Style Assistant',
+    widgetTitle: 'Personal Stylist',
+    openingMessage1: 'Welcome to your stylist',
+    openingMessage2: 'I\'m here, like an in-store concierge, to help you find pieces, build looks, or compare options. Tell me the occasion — or pick a starting point below.',
+    chatBoxPlaceholder: 'Ask anything…',
+    triggerCTA: 'Stylist',
     price: '{price}',
     originalPrice: '{originalPrice}',
     discount: '{discount} off',
