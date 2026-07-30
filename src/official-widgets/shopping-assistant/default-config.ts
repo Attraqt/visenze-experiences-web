@@ -4,8 +4,8 @@ import type { LanguagePack } from '../../common/locales/locale';
 export const DEFAULT_TEXTS: LanguagePack = {
   en: {
     widgetTitle: 'Personal Stylist',
-    openingMessage1: 'Welcome to your stylist',
-    openingMessage2: 'I\'m here, like an in-store concierge, to help you find pieces, build looks, or compare options. Tell me the occasion — or pick a starting point below.',
+    openingMessage1: 'Hi! I\'m your personal shopping assistant.',
+    openingMessage2: 'I can help you find products, answer questions, and provide recommendations. What are you looking for today?',
     chatBoxPlaceholder: 'Ask anything…',
     triggerCTA: 'Stylist',
     price: '{price}',

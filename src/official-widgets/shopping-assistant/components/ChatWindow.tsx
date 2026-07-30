@@ -12,6 +12,10 @@ import DownArrowIcon from '../icons/DownArrowIcon';
 
 const FOCUS_VISIBLE_CLASSES = 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:focus-visible:outline-blue-300';
 
+// Swarovski PDP redirect: product cards link to the live store built from the
+// catalogue product id, regardless of the product_url field in the feed.
+const PRODUCT_URL_TEMPLATE = 'https://www.swarovski.com/en_GB-GB/{product_id}/';
+
 export interface Chat {
   chatId: string;
   requestId: string;
@@ -41,7 +45,7 @@ const ChatWindow: FC<ChatWindowProps> = ({
   streamingProducts = [], streamingRequestId = '',
 }) => {
   const { widgetConfig, darkMode } = useContext(WidgetDataContext);
-  const { customizations, initState } = widgetConfig;
+  const { customizations, initState, displaySettings } = widgetConfig;
   const intl = useIntl();
   const [wishlistPids, setWishlistPids] = useState<string[]>(initState?.wishlistProductIds || []);
   const breakpoint = useBreakpoint();
@@ -149,9 +153,16 @@ const ChatWindow: FC<ChatWindowProps> = ({
 
   const renderProductCard = (product: ProcessedProduct, pidx: number, requestId: string): ReactElement => {
     const viewedKey = `${requestId}:${product.product_id}`;
+    // Point the card at the Swarovski PDP built from the product id, overriding
+    // whatever product_url the feed supplies. The card reads the URL from the
+    // catalogue-mapped product_url field, so we override that same key.
+    const urlField = displaySettings.productDetails['product_url'] || 'product_url';
+    const productForCard: ProcessedProduct = product.product_id
+      ? { ...product, [urlField]: PRODUCT_URL_TEMPLATE.replace('{product_id}', product.product_id) }
+      : product;
     return (
       <ProductCard
-          result={product}
+          result={productForCard}
           key={`${product.product_id}-${pidx}`}
           metadata={{
             queryId: requestId,
