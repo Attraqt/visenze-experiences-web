@@ -204,7 +204,7 @@ const ChatWindow: FC<ChatWindowProps> = ({
           {chats.map((chat, idx) => (
               <div className={cn(
                   'w-full',
-                  chat.author === 'products' ? `grid grid-cols-2 ${getProductGridCssClasses('gap-x-4')}` : 'flex flex-col',
+                  chat.author === 'products' ? `grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-y-3 ${getProductGridCssClasses('gap-x-3')}` : 'flex flex-col',
                   chat.author === 'user' ? 'items-end' : '',
               )}
                    style={getProductGridCssConfig(chat.author === 'products')}
@@ -299,7 +299,7 @@ const ChatWindow: FC<ChatWindowProps> = ({
                 </div>
                 {streamingRequestId && streamingProducts.length > 0 && (
                     <div
-                      className={cn('w-full grid grid-cols-2', getProductGridCssClasses('gap-x-4'))}
+                      className={cn('w-full grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-y-3', getProductGridCssClasses('gap-x-3'))}
                       style={getProductGridCssConfig(true)}>
                       {streamingProducts.map((product, pidx) => renderProductCard(product, pidx, streamingRequestId))}
                     </div>
