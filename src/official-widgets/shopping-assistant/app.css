@@ -25,6 +25,11 @@
   .wigmix-product-card-details {
     @apply p-2 text-center;
   }
+  /* The price row is a flex container, so text-align on the details wrapper
+     doesn't centre it — centre its items explicitly to match the demo. */
+  .wigmix-product-card-price-row {
+    @apply justify-center;
+  }
   .wigmix-product-card-title {
     @apply text-mobile-productCardTitle md:text-tablet-productCardTitle lg:text-desktop-productCardTitle font-mobile-productCardTitle md:font-tablet-productCardTitle lg:font-desktop-productCardTitle;
   }
@@ -93,10 +98,13 @@
   }
 }
 
+/* Fixed ~440px side panel to match the reference demo's Personal Stylist width
+   (was 65% padding => a variable 35%-of-viewport panel, much wider than the demo).
+   Collapses to full width below 440px so mobile still fills the screen. */
 .wigmix-modal-overlay.wigmix-modal-position-right {
-  padding-left: 65% !important;
+  padding-left: max(0px, calc(100% - 440px)) !important;
 }
 
 .wigmix-modal-overlay.wigmix-modal-position-left {
-  padding-right: 65% !important;
+  padding-right: max(0px, calc(100% - 440px)) !important;
 }
