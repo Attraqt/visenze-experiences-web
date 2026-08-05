@@ -18,6 +18,13 @@
   .wigmix-widget-title {
     @apply text-mobile-heading md:text-tablet-heading lg:text-desktop-heading font-mobile-heading md:font-tablet-heading lg:font-desktop-heading;
   }
+  /* Match the reference demo's product card: bordered, rounded, centred text. */
+  .wigmix-product-card {
+    @apply overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700;
+  }
+  .wigmix-product-card-details {
+    @apply p-2 text-center;
+  }
   .wigmix-product-card-title {
     @apply text-mobile-productCardTitle md:text-tablet-productCardTitle lg:text-desktop-productCardTitle font-mobile-productCardTitle md:font-tablet-productCardTitle lg:font-desktop-productCardTitle;
   }
@@ -26,6 +33,10 @@
   }
   .wigmix-product-card-price {
     @apply text-mobile-productCardPrice md:text-tablet-productCardPrice lg:text-desktop-productCardPrice font-mobile-productCardPrice md:font-tablet-productCardPrice lg:font-desktop-productCardPrice;
+    /* Match the demo's blue price. Set here (baked into the shadow styles)
+       rather than via config, whose price.fontColor is overridden by the
+       placement's server-side customizations. */
+    @apply text-[#0F4D8A] dark:text-[#60A5FA];
   }
   .wigmix-product-card-original-price {
     @apply text-mobile-productCardOriginalPrice md:text-tablet-productCardOriginalPrice lg:text-desktop-productCardOriginalPrice font-mobile-productCardOriginalPrice md:font-tablet-productCardOriginalPrice lg:font-desktop-productCardOriginalPrice;

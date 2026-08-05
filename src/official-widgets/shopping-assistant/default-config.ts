@@ -361,26 +361,26 @@ export const DEFAULT_CUSTOMIZATIONS: WidgetConfig['customizations'] = {
     },
   },
   productCard: {
-    imageAspectRatio: '2 / 3',
+    imageAspectRatio: '1 / 1',
     openLinksInNewTab: false,
     price: {
       show: true,
       font: {
         mobile: {
           size: 12,
-          weight: 400,
+          weight: 600,
         },
         tablet: {
           size: 12,
-          weight: 400,
+          weight: 600,
         },
         desktop: {
-          size: 14,
-          weight: 400,
+          size: 12,
+          weight: 600,
         },
       },
-      fontColor: '#B91C1C',
-      fontColorDark: '#EF4444',
+      fontColor: '#0F4D8A',
+      fontColorDark: '#60A5FA',
     },
     originalPrice: {
       show: true,
@@ -429,16 +429,16 @@ export const DEFAULT_CUSTOMIZATIONS: WidgetConfig['customizations'] = {
       fieldSource: 'title',
       font: {
         mobile: {
-          size: 14,
-          weight: 700,
+          size: 12,
+          weight: 500,
         },
         tablet: {
-          size: 14,
-          weight: 700,
+          size: 12,
+          weight: 500,
         },
         desktop: {
-          size: 16,
-          weight: 700,
+          size: 12,
+          weight: 500,
         },
       },
     },
