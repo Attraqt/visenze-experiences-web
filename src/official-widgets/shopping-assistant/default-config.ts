@@ -3,7 +3,7 @@ import type { LanguagePack } from '../../common/locales/locale';
 
 export const DEFAULT_TEXTS: LanguagePack = {
   en: {
-    widgetTitle: 'Personal Stylist',
+    widgetTitle: 'Shopping Assistant',
     openingMessage1: 'Hi! I\'m your personal shopping assistant.',
     openingMessage2: 'I can help you find products, answer questions, and provide recommendations. What are you looking for today?',
     chatBoxPlaceholder: 'Ask anything…',

@@ -98,13 +98,13 @@
   }
 }
 
-/* Fixed ~440px side panel to match the reference demo's Personal Stylist width
+/* Fixed 380px side panel to match the reference demo's docked sidebar width
    (was 65% padding => a variable 35%-of-viewport panel, much wider than the demo).
-   Collapses to full width below 440px so mobile still fills the screen. */
+   Collapses to full width below 380px so mobile still fills the screen. */
 .wigmix-modal-overlay.wigmix-modal-position-right {
-  padding-left: max(0px, calc(100% - 440px)) !important;
+  padding-left: max(0px, calc(100% - 380px)) !important;
 }
 
 .wigmix-modal-overlay.wigmix-modal-position-left {
-  padding-right: max(0px, calc(100% - 440px)) !important;
+  padding-right: max(0px, calc(100% - 380px)) !important;
 }
