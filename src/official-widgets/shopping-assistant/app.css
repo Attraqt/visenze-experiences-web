@@ -83,7 +83,35 @@
   }
 }
 
+/* Product cards fade in as they stream into the list, for a nicer reveal than
+   an abrupt pop (pure CSS, no framer-motion dependency). They stream in one at
+   a time, so each fades on arrival rather than using a batch stagger (which
+   would lag late cards). The final settled grid (.wigmix-products-grid) renders
+   instantly, so the streaming -> final swap is seamless (opacity 1 -> opacity 1)
+   instead of re-animating. */
+@keyframes wigmixCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wigmix-product-card {
+  animation: wigmixCardIn 0.35s ease-out both;
+}
+.wigmix-products-grid .wigmix-product-card {
+  animation: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .wigmix-product-card {
+    animation: none;
+  }
+
   .loading-dot {
     animation: none;
   }

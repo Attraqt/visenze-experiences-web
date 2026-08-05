@@ -16,6 +16,9 @@ const FOCUS_VISIBLE_CLASSES = 'focus-visible:outline focus-visible:outline-2 foc
 // catalogue product id, regardless of the product_url field in the feed.
 const PRODUCT_URL_TEMPLATE = 'https://www.swarovski.com/en_GB-GB/{product_id}/';
 
+// Responsive product grid (small auto-fit cards, matching the demo).
+const PRODUCT_GRID_BASE = 'grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-y-3';
+
 export interface Chat {
   chatId: string;
   requestId: string;
@@ -204,7 +207,7 @@ const ChatWindow: FC<ChatWindowProps> = ({
           {chats.map((chat, idx) => (
               <div className={cn(
                   'w-full',
-                  chat.author === 'products' ? `grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-y-3 ${getProductGridCssClasses('gap-x-3')}` : 'flex flex-col',
+                  chat.author === 'products' ? `wigmix-products-grid ${PRODUCT_GRID_BASE} ${getProductGridCssClasses('gap-x-3')}` : 'flex flex-col',
                   chat.author === 'user' ? 'items-end' : '',
               )}
                    style={getProductGridCssConfig(chat.author === 'products')}
@@ -299,7 +302,7 @@ const ChatWindow: FC<ChatWindowProps> = ({
                 </div>
                 {streamingRequestId && streamingProducts.length > 0 && (
                     <div
-                      className={cn('w-full grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-y-3', getProductGridCssClasses('gap-x-3'))}
+                      className={cn('w-full', PRODUCT_GRID_BASE, getProductGridCssClasses('gap-x-3'))}
                       style={getProductGridCssConfig(true)}>
                       {streamingProducts.map((product, pidx) => renderProductCard(product, pidx, streamingRequestId))}
                     </div>
